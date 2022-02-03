@@ -16,8 +16,13 @@ def main():
 #    cursor.close()
     
     #initialize state machine
-    thermostat = stateMachine.thermostat
+    thermostat = stateMachine.thermostat()
     print("---Thermostat created---")
+    print("Startig state: "+ thermostat.machine.get_state(thermostat.state).name)
     while thermostat.LOOP:
-        thermostat.tempChange
+        print("---Temp Change---")
+        thermostat.tempChange()
         sleep(1)
+
+if __name__ == "__main__":
+    main()
