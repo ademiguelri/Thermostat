@@ -1,5 +1,3 @@
-from ast import While
-from asyncore import loop
 from time import sleep
 #import psycopg2
 import python.config as config
@@ -19,6 +17,7 @@ def main():
     
     #initialize state machine
     thermostat = stateMachine.transitions
+    print("---Thermostat created---")
     while thermostat.LOOP:
         stateMachine.transitions.tempChange
         sleep(1)
