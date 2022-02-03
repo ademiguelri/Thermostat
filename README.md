@@ -1,4 +1,5 @@
 Open postgres terminal inside the docker:
+
     docker exec -it <dockerID> psql -U postgres
 
 Create database:
