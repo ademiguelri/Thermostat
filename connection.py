@@ -14,6 +14,7 @@ def main():
 #    cursor.execute(query_create_table)
 #    conn.commit()
 #    cursor.close()
+
     
     #initialize state machine
     thermostat = stateMachine.thermostat()
