@@ -28,7 +28,7 @@ class transitions:
             else:
                 self.machine.temp_max()
         elif self.machine.state == 'cooling':
-            if self.temp > 21:
+            if self.temp > 20:
                 self.temp -= random()
                 print("---Cooling the space. Actual temperature: " + self.tempChange + "---")
             else:
