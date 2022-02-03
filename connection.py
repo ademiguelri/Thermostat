@@ -17,7 +17,8 @@ def main():
     conn.commit()
     cursor.close()
     
-    while stateMachine.LOOP:
-        stateMachine.machine.stateCases
-
+    #initialize state machine
+    thermostat = stateMachine.transitions
+    while thermostat.LOOP:
+        stateMachine.transitions.tempChange
         sleep(1)
