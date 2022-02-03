@@ -23,6 +23,12 @@ def main():
         print("---Temp Change---")
         thermostat.tempChange()
         sleep(1)
+        if thermostat.state == 'start':
+            thermostat.initialize()
+        elif thermostat.temp > 23:
+            thermostat.temp_max()
+        elif thermostat.temp < 19:
+            thermostat.temp_min()
 
 if __name__ == "__main__":
     main()
