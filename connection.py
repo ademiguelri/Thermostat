@@ -36,14 +36,14 @@ def main():
          
             if thermostat.state == 'start':
                 thermostat.initialize()
-            elif thermostat.temp > 23:
+            elif thermostat.temp > 23 and thermostat.state == 'warming':
                 thermostat.temp_max()
-            elif thermostat.temp < 19:
+            elif thermostat.temp < 16 and thermostat.state == 'cooling':
                 thermostat.temp_min()
 
             ct = datetime.datetime.now()
             print(ct)
-            cursor.execute("INSERT INTO therm (datetime, temp) VALUES ("+str(ct)+","+str(thermostat.temp)+")")
+            cursor.execute("INSERT INTO therm (datetime, temp) VALUES (current_timestamp,"+str(thermostat.temp)+")")
             conn.commit()
             sleep(1)
 
