@@ -1,6 +1,23 @@
+Run docker-compose to start Timescaledb and Grafana
+
+Connect Grafana to postgreSQL:
+    
+    Host: 172.20.0.1:5432
+    Database: test
+    User: postgres
+    Password: password
+    TLS/SSL mode: disable
+    Version: 14
+    TimescaleDB: check
+
 Open postgres terminal inside the docker:
 
     docker exec -it <dockerID> psql -U postgres
+
+Run connection.py to start the python script and create the data.
+
+
+Postgres info
 
 Create database:
 
@@ -20,14 +37,3 @@ Create table:
 Insert data to DB with generate_series:
 
     insert into  auto(dateTime, info) values (generate_series('2020-01-01'::date, '2020-12-31'::date, INTERVAL '1 day'),generate_series(1,365)*(10 + 10 * random()));
-
-
-Grafana PostgreSQL configuration:
-
-    Host: 172.20.0.1:5432
-    Database: test
-    User: postgres
-    Password: password
-    TLS/SSL mode: disable
-    Version: 14
-    TimescaleDB: check
