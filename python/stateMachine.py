@@ -15,7 +15,6 @@ class thermostat(object):
         self.machine.add_transition(trigger='temp_min', source='cooling', dest='warming')
         self.machine.add_transition(trigger='power_off', source='*', dest='OFF', after='stopMachine')
 
-
     def tempChange(self):
         if self.machine.get_state(self.state).name == 'start':
             print("---Thermostat starting---")
