@@ -1,14 +1,12 @@
-from mimetypes import init
-from pickle import TRUE
 from transitions import Machine
 import random
 
-class transitions:
+class thermostat:
 
     STATESLIST = ['start', 'warming', 'cooling', 'off']
 
     def __init__(self):
-        self.machine = Machine(model = self, states=transitions.STATESLIST, initial  = 'start')
+        self.machine = Machine(model = self, states=thermostat.STATESLIST, initial  = 'start')
         self.temp = 16
         self.LOOP = True
 

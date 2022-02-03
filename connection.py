@@ -1,10 +1,10 @@
 from time import sleep
-#import psycopg2
+import psycopg2
 import python.config as config
 import python.stateMachine as stateMachine
 
 #CONNECTION = "postgres://"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.dbName
-#query_create_table = "CREATE TABLE auto (data TIMESTAMP, balio INT);"
+#query_create_table = "CREATE TABLE auto (dateTime TIMESTAMP, info INT);"
 
 def main():
 #    with psycopg2.connect(CONNECTION) as conn:
@@ -16,8 +16,8 @@ def main():
 #    cursor.close()
     
     #initialize state machine
-    thermostat = stateMachine.transitions
+    thermostat = stateMachine.thermostat
     print("---Thermostat created---")
     while thermostat.LOOP:
-        stateMachine.transitions.tempChange
+        thermostat.tempChange
         sleep(1)
