@@ -2,8 +2,9 @@ from time import sleep
 import datetime
 from warnings import catch_warnings;
 import psycopg2
-import python.config as config
-import python.stateMachine as stateMachine
+import transition.config as config
+import OPCUA.client as client
+import transition.stateMachine as stateMachine
 
 CONNECTION = "postgres://"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.dbName
 query_create_table = "CREATE TABLE therm (datetime TIMESTAMP, temp FLOAT);"
@@ -30,20 +31,21 @@ def main():
         thermostat = stateMachine.thermostat()
         print("---Thermostat created---")
         print("Startig state: "+ thermostat.machine.get_state(thermostat.state).name)
-        while thermostat.LOOP:
-            print("---Temp Change---")
-            thermostat.tempChange()
-         
-            if thermostat.state == 'start':
-                thermostat.initialize()
-            elif thermostat.temp > 23 and thermostat.state == 'warming':
-                thermostat.temp_max()
-            elif thermostat.temp < 16 and thermostat.state == 'cooling':
-                thermostat.temp_min()
+        while True:
 
-            ct = datetime.datetime.now()
-            print(ct)
-            cursor.execute("INSERT INTO therm (datetime, temp) VALUES (current_timestamp,"+str(thermostat.temp)+")")
+            #print("---Temp Change---")
+            #thermostat.tempChange()
+         
+            #if thermostat.state == 'start':
+            #    thermostat.initialize()
+            #   elif thermostat.temp > 23 and thermostat.state == 'warming':
+            #       thermostat.temp_max()
+            #   elif thermostat.temp < 16 and thermostat.state == 'cooling':
+            #       thermostat.temp_min()
+
+            #ct = datetime.datetime.now()
+            #print(ct)
+            cursor.execute("INSERT INTO therm (datetime, temp) VALUES (current_timestamp,"+str(client.Temp.get_value())+")")
             conn.commit()
             sleep(1)
 
