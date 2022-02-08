@@ -13,6 +13,8 @@ Connect Grafana to postgreSQL:
 Open postgres terminal inside the docker:
 
     docker exec -it <dockerID> psql -U postgres
+    
+Create database    
 
 Run connection.py to start the python script and create the data.
 
